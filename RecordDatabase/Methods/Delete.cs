@@ -9,19 +9,37 @@ namespace RecordDatabase.Methods
 {
     internal class Delete
     {
-        public static void Remove() 
+        public static void Remove()
         {
-            SqlConnection sqlConnection;
-            string connectionString = @"Data Source=DESKTOP-KILJFHC;Initial Catalog=Vinyls;Integrated Security=True;TrustServerCertificate=True";
-            sqlConnection = new SqlConnection(connectionString);
-            sqlConnection.Open();
+            string connectionString = @"Data Source=MAX-DATOR;Initial Catalog=Vinyls;Integrated Security=True;";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                Read.Get();
+                connection.Open();
 
-            Console.WriteLine("Skriv in ID för skivan du vill ta bort!");
-            int vinyl_ID = Convert.ToInt32(Console.ReadLine());
-            string deleteQuery = "DELETE FROM RECORDS WHERE VinylID = " + vinyl_ID + "";
-            SqlCommand deleteCommand = new SqlCommand(deleteQuery, sqlConnection);
-            deleteCommand.ExecuteNonQuery();
-            Console.WriteLine("Då var den skivan borttagen!");
+                Console.WriteLine("Skriv in artistens namn:");
+                string artist = Console.ReadLine();
+
+                Console.WriteLine("Skriv in albumets namn:");
+                string album = Console.ReadLine();
+
+                string deleteQuery = @"DELETE FROM Records 
+                               WHERE ArtistName = @Artist 
+                               AND AlbumName = @Album";
+
+                using (SqlCommand command = new SqlCommand(deleteQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@Artist", artist);
+                    command.Parameters.AddWithValue("@Album", album);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                        Console.WriteLine("Skivan togs bort!");
+                    else
+                        Console.WriteLine("Ingen matchande skiva hittades.");
+                }
+            }
         }
     }
 }

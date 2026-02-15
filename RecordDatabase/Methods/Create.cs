@@ -12,7 +12,7 @@ namespace RecordDatabase.Methods
         public static void Post()
         {
             SqlConnection sqlConnection;
-            string connectionString = @"Data Source=DESKTOP-KILJFHC;Initial Catalog=Vinyls;Integrated Security=True;TrustServerCertificate=True";
+            string connectionString = @"Data Source=MAX-DATOR;Initial Catalog=Vinyls;Integrated Security=True;";
             sqlConnection = new SqlConnection(connectionString);
             sqlConnection.Open();
 
