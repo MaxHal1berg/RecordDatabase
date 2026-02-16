@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using RecordDatabase.Frontend;
 
 namespace RecordDatabase
 {
@@ -25,12 +26,14 @@ namespace RecordDatabase
                 string svar;
                 do
                 {
-                    Console.WriteLine("Välj ett av alternativen i listan:");
-                    Console.WriteLine("1, för att lägga till en skiva i biblioteket");
-                    Console.WriteLine("2, för att hämta alla skivor i biblioteket");
-                    Console.WriteLine("3, för att uppdatera information om en skiva");
-                    Console.WriteLine("4, för att ta bort en skiva i biblioteket");
-                    Console.WriteLine("5, för att avsluta");
+                    Choices.Toptext();
+                    //Console.WriteLine("Välj ett av alternativen i listan:");
+                    //Console.WriteLine("1, för att lägga till en skiva i biblioteket");
+                    //Console.WriteLine("2, för att hämta alla skivor i biblioteket");
+                    //Console.WriteLine("3, för att uppdatera information om en skiva");
+                    //Console.WriteLine("4, för att ta bort en skiva i biblioteket");
+                    //Console.WriteLine("5, för att avsluta");
+                    Choices.MenuChoices();
                     int choice = int.Parse(Console.ReadLine());
                     switch (choice)
                     {

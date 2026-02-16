@@ -17,10 +17,14 @@ namespace RecordDatabase.Methods
                 Read.Get();
                 connection.Open();
 
+                Console.WriteLine("=======================================");
                 Console.WriteLine("Skriv in artistens namn:");
+                Console.WriteLine("=======================================");
                 string artist = Console.ReadLine();
 
+                Console.WriteLine("=======================================");
                 Console.WriteLine("Skriv in albumets namn:");
+                Console.WriteLine("=======================================");
                 string album = Console.ReadLine();
 
                 string deleteQuery = @"DELETE FROM Records 
